@@ -14,6 +14,7 @@ import { useCurrencyBalances } from 'state/wallet/hooks'
 import { currencyId } from 'utils/currencyId'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 
+import styled from 'styled-components'
 import { useAccount } from 'wagmi'
 import useWarningImport from '../../hooks/useWarningImport'
 import { FormContainer } from '../components'
@@ -29,6 +30,31 @@ interface Props {
   pricingAndSlippage?: ReactNode
   swapCommitButton?: ReactNode
 }
+
+const StyledFlipContainer = styled('div')`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+`
+
+const FlipButtonContainer = styled('div')`
+  position: relative;
+  margin-top: 1rem;
+  &::before {
+    content: '';
+    width: 95%;
+    height: 2px;
+    background-color: ${({ theme }) => theme.colors.cardBorder};
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+  }
+`
 
 export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeLoading, swapCommitButton }: Props) {
   const { address: account } = useAccount()
@@ -132,7 +158,13 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
         commonBasesType={CommonBasesType.SWAP_LIMITORDER}
       />
       <RiskCheck currency={inputCurrency ?? undefined} />
-      <FlipButton />
+      <FlipButtonContainer>
+        <StyledFlipContainer>
+          <div style={{ gridColumn: 3 }}>
+            <FlipButton />
+          </div>
+        </StyledFlipContainer>
+      </FlipButtonContainer>
       <CurrencyInputPanel
         id="swap-currency-output"
         showUSDPrice

@@ -1,4 +1,4 @@
-import { Text, AtomBox, SwapCSS } from "@pancakeswap/uikit";
+import { AtomBox, SwapCSS, Text } from "@pancakeswap/uikit";
 
 import { NumericalInput, NumericalInputProps } from "./NumericalInput";
 
@@ -23,23 +23,17 @@ export function CurrencyInputPanel({
 }: CurrencyInputPanelProps) {
   return (
     <AtomBox position="relative" id={id} display="grid" gap="4px">
-      <AtomBox display="flex" alignItems="center" justifyContent="space-between">
+      <AtomBox display="flex" alignItems="center" justifyContent="flex-end">
         {top}
       </AtomBox>
-      <AtomBox
-        display="flex"
-        flexDirection="column"
-        flexWrap="nowrap"
-        position="relative"
-        backgroundColor="backgroundAlt"
-        zIndex="1"
-      >
+      <AtomBox display="flex" flexDirection="column" flexWrap="nowrap" position="relative" zIndex="1">
         <AtomBox
           as="label"
           className={SwapCSS.inputContainerVariants({
             showBridgeWarning: !!showBridgeWarning,
             error: Boolean(error),
           })}
+          backgroundColor="transparent"
         >
           <AtomBox
             display="flex"

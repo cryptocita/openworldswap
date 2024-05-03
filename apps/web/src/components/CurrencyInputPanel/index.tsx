@@ -163,6 +163,30 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
           {title}
           <Flex alignItems="center">
             {beforeButton}
+
+            {token && tokenAddress ? (
+              <Flex style={{ gap: '4px' }} ml="4px" alignItems="center">
+                <CopyButton
+                  data-dd-action-name="Copy token address"
+                  width="16px"
+                  buttonColor="textSubtle"
+                  text={tokenAddress}
+                  tooltipMessage={t('Token address copied')}
+                  marginRight="3px"
+                />
+                <AddToWalletButton
+                  data-dd-action-name="Add to wallet"
+                  variant="text"
+                  p="0"
+                  height="auto"
+                  width="fit-content"
+                  tokenAddress={tokenAddress}
+                  tokenSymbol={token.symbol}
+                  tokenDecimals={token.decimals}
+                  tokenLogo={token instanceof WrappedTokenInfo ? token.logoURI : undefined}
+                />
+              </Flex>
+            ) : null}
             <CurrencySelectButton
               className="open-currency-select-button"
               data-dd-action-name="Select currency"
@@ -198,28 +222,6 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
                 {!currencyLoading && !disableCurrencySelect && <ArrowDropDownIcon />}
               </Flex>
             </CurrencySelectButton>
-            {token && tokenAddress ? (
-              <Flex style={{ gap: '4px' }} ml="4px" alignItems="center">
-                <CopyButton
-                  data-dd-action-name="Copy token address"
-                  width="16px"
-                  buttonColor="textSubtle"
-                  text={tokenAddress}
-                  tooltipMessage={t('Token address copied')}
-                />
-                <AddToWalletButton
-                  data-dd-action-name="Add to wallet"
-                  variant="text"
-                  p="0"
-                  height="auto"
-                  width="fit-content"
-                  tokenAddress={tokenAddress}
-                  tokenSymbol={token.symbol}
-                  tokenDecimals={token.decimals}
-                  tokenLogo={token instanceof WrappedTokenInfo ? token.logoURI : undefined}
-                />
-              </Flex>
-            ) : null}
           </Flex>
 
           {account && !hideBalanceComp && (
@@ -244,7 +246,7 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
       bottom={
         <>
           {!!showUSDPrice && (
-            <Flex justifyContent="flex-end" mr="1rem">
+            <Flex justifyContent="flex-start" mr="1rem" px="16px">
               <Flex maxWidth="200px">
                 {inputLoading ? (
                   <Loading width="14px" height="14px" />

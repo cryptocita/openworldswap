@@ -1,24 +1,9 @@
 import { useTranslation } from '@pancakeswap/localization'
-import {
-  ChartDisableIcon,
-  ChartIcon,
-  Flex,
-  HistoryIcon,
-  HotDisableIcon,
-  HotIcon,
-  IconButton,
-  NotificationDot,
-  Text,
-  TooltipText,
-  useModal,
-  useTooltip,
-} from '@pancakeswap/uikit'
+import { Flex, IconButton, NotificationDot, Text, useModal, useTooltip } from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
 import { Swap } from '@pancakeswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import GlobalSettings from 'components/Menu/GlobalSettings'
-import RefreshIcon from 'components/Svg/RefreshIcon'
-import { CHAIN_REFRESH_TIME } from 'config/constants/exchange'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { useAtom } from 'jotai'
@@ -43,6 +28,21 @@ interface Props {
 const ColoredIconButton = styled(IconButton)`
   color: ${({ theme }) => theme.colors.textSubtle};
   overflow: hidden;
+`
+const StyledGrid = styled('div')`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 100%;
+`
+const StyledSwapTitle = styled('div')`
+  grid-column: 2;
+  text-align: center;
+`
+const StyledSettings = styled('div')`
+  margin-left: auto;
 `
 
 //  disable this during the v3 campaign
@@ -100,14 +100,27 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
 
     const titleContent = (
       <Flex width="100%" alignItems="center" justifyContent="space-between" flexDirection="column">
-        <Flex flexDirection="column" alignItems="flex-start" width="100%" marginBottom={15}>
-          <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
-        </Flex>
-        <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="14px">
+        {/* Swap Widget Header */}
+        <StyledGrid>
+          <StyledSwapTitle>
+            <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
+          </StyledSwapTitle>
+          <StyledSettings>
+            <NotificationDot show={expertMode || isRoutingSettingChange}>
+              <GlobalSettings
+                color="white"
+                mr="0"
+                mode={SettingsMode.SWAP_LIQUIDITY}
+                data-dd-action-name="Swap settings button"
+              />
+            </NotificationDot>
+          </StyledSettings>
+        </StyledGrid>
+        <Flex justifyContent="center" width="100%" height="17px" alignItems="center" mb="14px">
           <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
         </Flex>
-        <Flex width="100%" justifyContent="end">
-          {/* {chainId ? (
+        {/* <Flex width="100%" justifyContent="end">
+          {chainId ? (
             <Flex alignItems="center" justifyContent="center" px="4px" mt="5px">
               <TooltipText
                 ref={buyCryptoTargetRef}
@@ -121,7 +134,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
               </TooltipText>
               {buyCryptoTooltipVisible && (!isMobile || mobileTooltipShow) && buyCryptoTooltip}
             </Flex>
-          ) : null} */}
+          ) : null}
           {isChartSupported && (
             <ColoredIconButton
               onClick={() => {
@@ -194,7 +207,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
               duration={chainId && CHAIN_REFRESH_TIME[chainId] ? CHAIN_REFRESH_TIME[chainId] / 1000 : undefined}
             />
           </IconButton>
-        </Flex>
+        </Flex> */}
       </Flex>
     )
 
