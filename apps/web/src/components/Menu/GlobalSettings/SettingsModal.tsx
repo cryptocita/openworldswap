@@ -14,7 +14,6 @@ import {
   Modal,
   ModalV2,
   NotificationDot,
-  PancakeToggle,
   PreTitle,
   QuestionHelper,
   RowFixed,
@@ -35,7 +34,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useSpeedQuote } from 'hooks/useSpeedQuote'
 import useTheme from 'hooks/useTheme'
 import { useWebNotifications } from 'hooks/useWebNotifications'
-import { ReactNode, lazy, useCallback, useState } from 'react'
+import { ReactNode, useCallback, useState } from 'react'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { useSubgraphHealthIndicatorManager, useUserUsernameVisibility } from 'state/user/hooks'
 import { useUserShowTestnet } from 'state/user/hooks/useUserShowTestnet'
@@ -54,20 +53,21 @@ import GasSettings from './GasSettings'
 import TransactionSettings from './TransactionSettings'
 import { SettingsMode } from './types'
 
-const WebNotiToggle = lazy(() => import('./WebNotiToggle'))
+// const WebNotiToggle = lazy(() => import('./WebNotiToggle'))
 
-const BetaTag = styled.div`
-  border: 2px solid ${({ theme }) => theme.colors.success};
-  border-radius: 16px;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: ${({ theme }) => theme.colors.success};
-  margin-left: 6px;
-  font-weight: bold;
-  font-size: 14px;
-`
+// const BetaTag = styled.div`
+//   border: 2px solid ${({ theme }) => theme.colors.success};
+//   border-radius: 16px;
+//   padding-left: 6px;
+//   padding-right: 6px;
+//   padding-top: 3px;
+//   padding-bottom: 3px;
+//   color: ${({ theme }) => theme.colors.success};
+//   margin-left: 6px;
+//   font-weight: bold;
+//   font-size: 14px;
+// `
+
 const ScrollableContainer = styled(Flex)`
   flex-direction: column;
   height: auto;
@@ -281,12 +281,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                   ml="4px"
                 />
               </Flex>
-              <PancakeToggle
-                id="toggle-audio-play"
-                checked={audioPlay}
-                onChange={() => setAudioMode((s) => !s)}
-                scale="md"
-              />
+              <Toggle id="toggle-audio-play" checked={audioPlay} onChange={() => setAudioMode((s) => !s)} scale="md" />
             </Flex>
             <Flex justifyContent="space-between" alignItems="center" mb="24px">
               <Flex alignItems="center">
@@ -297,7 +292,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                   ml="4px"
                 />
               </Flex>
-              <PancakeToggle
+              <Toggle
                 id="toggle-speed-quote"
                 checked={speedQuote}
                 onChange={() => setSpeedQuote((s) => !s)}
@@ -441,7 +436,7 @@ function RoutingSettings() {
                 ml="4px"
               />
             </Flex>
-            <PancakeToggle
+            <Toggle
               disabled={isStableSwapByDefault && onlyOneAMMSourceEnabled}
               id="stable-swap-toggle"
               scale="md"
