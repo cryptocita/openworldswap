@@ -11,8 +11,6 @@ import {
   ModalWrapper,
   MoreHorizontalIcon,
   SvgProps,
-  Tab,
-  TabMenu,
   Text,
   WarningIcon,
 } from '@pancakeswap/uikit'
@@ -81,12 +79,12 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
 
   return (
     <AtomBox position="relative" zIndex="modal" className={modalWrapperClass}>
-      <AtomBox position="absolute" style={{ top: '-50px' }}>
+      {/* <AtomBox position="absolute" style={{ top: '-50px' }}>
         <TabMenu activeIndex={index} onItemClick={setIndex} gap="0px" isColorInverse isShowBorderBottom={false}>
           <Tab>{t('Connect Wallet')}</Tab>
           <Tab>{t('What’s a Web3 Wallet?')}</Tab>
         </TabMenu>
-      </AtomBox>
+      </AtomBox> */}
       <AtomBox
         display="flex"
         position="relative"
@@ -100,11 +98,11 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
         width="100%"
       >
         {index === 0 && children}
-        {index === 1 && (
+        {/* {index === 1 && (
           <Suspense>
             <StepIntro docLink={docLink} docText={docText} />
           </Suspense>
-        )}
+        )} */}
       </AtomBox>
     </AtomBox>
   )
@@ -168,7 +166,7 @@ function MobileModal<T>({
           }}
         />
       </AtomBox>
-      <AtomBox p="24px" borderTop="1">
+      {/* <AtomBox p="24px" borderTop="1">
         <AtomBox>
           <Text textAlign="center" color="textSubtle" as="p" mb="24px">
             {t('Haven’t got a crypto wallet yet?')}
@@ -177,7 +175,7 @@ function MobileModal<T>({
         <Button as="a" href={docLink} variant="subtle" width="100%" external>
           {docText}
         </Button>
-      </AtomBox>
+      </AtomBox> */}
     </AtomBox>
   )
 }
@@ -355,7 +353,7 @@ function DesktopModal<T>({
           }}
         />
       </AtomBox>
-      <AtomBox
+      {/* <AtomBox
         flex={1}
         mx="24px"
         display={{
@@ -383,7 +381,7 @@ function DesktopModal<T>({
           )}
           {selected && selected.installed === false && <NotInstalled qrCode={qrCode} wallet={selected} />}
         </AtomBox>
-      </AtomBox>
+      </AtomBox> */}
     </>
   )
 }
