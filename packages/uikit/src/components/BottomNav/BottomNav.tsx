@@ -1,11 +1,11 @@
-import React, { useState, memo } from "react";
+import React, { memo, useState } from "react";
 import BottomNavItem from "../BottomNavItem";
-import StyledBottomNav from "./styles";
 import { Box } from "../Box";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import { BottomNavProps } from "./types";
 import { NotificationDot } from "../NotificationDot";
 import { Overlay } from "../Overlay";
+import StyledBottomNav from "./styles";
+import { BottomNavProps } from "./types";
 
 const BottomNav: React.FC<React.PropsWithChildren<BottomNavProps>> = ({
   items = [],
@@ -15,11 +15,12 @@ const BottomNav: React.FC<React.PropsWithChildren<BottomNavProps>> = ({
 }) => {
   const [menuOpenByIndex, setMenuOpenByIndex] = useState({});
   const isBottomMenuOpen = Object.values(menuOpenByIndex).some((acc) => acc);
+  const filteredItems = items.filter((i) => i.label != undefined);
   return (
     <>
       {isBottomMenuOpen && <Overlay />}
       <StyledBottomNav justifyContent="space-around" {...props}>
-        {items.map(
+        {filteredItems.map(
           (
             { label, items: menuItems, href, icon, fillIcon, showOnMobile = true, showItemsOnMobile = true, disabled },
             index
