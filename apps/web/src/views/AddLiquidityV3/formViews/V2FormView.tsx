@@ -3,7 +3,6 @@ import { Pair, Percent } from '@pancakeswap/sdk'
 import {
   AutoColumn,
   Box,
-  BunnyKnownPlaceholder,
   Button,
   DynamicSection,
   Flex,
@@ -21,7 +20,6 @@ import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { CommonBasesType } from 'components/SearchModal/types'
-import { Bound } from 'config/constants/types'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { Field } from 'state/mint/actions'
@@ -33,7 +31,6 @@ import { InfoBox } from '@pancakeswap/widgets-internal'
 import ApproveLiquidityTokens from 'views/AddLiquidityV3/components/ApproveLiquidityTokens'
 import { useAccount } from 'wagmi'
 import { HideMedium, MediumOnly, RightContainer } from './V3FormView'
-import RangeSelector from './V3FormView/components/RangeSelector'
 
 export default function V2FormView({
   formattedAmounts,
@@ -198,8 +195,8 @@ export default function V2FormView({
       <RightContainer>
         <AutoColumn pt="12px" gap="24px">
           <DynamicSection disabled gap="12px">
-            <InfoBox message={t('Your position will appear here.')} icon={<BunnyKnownPlaceholder />} />
-            <RangeSelector
+            <InfoBox message={t('Your position will appear here.')} imgSrc="/logo-bw.png" />
+            {/* <RangeSelector
               getDecrementLower={mockFn}
               getIncrementLower={mockFn}
               getDecrementUpper={mockFn}
@@ -213,7 +210,7 @@ export default function V2FormView({
                 [Bound.LOWER]: false,
                 [Bound.UPPER]: false,
               }}
-            />
+            /> */}
           </DynamicSection>
           <MediumOnly>{buttons}</MediumOnly>
         </AutoColumn>

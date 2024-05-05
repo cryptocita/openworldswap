@@ -30,7 +30,6 @@ export const modalWrapperClass = style([
   }),
   responsiveStyle({
     xs: {
-      width: '100%',
       marginBottom: 0,
     },
     md: {
