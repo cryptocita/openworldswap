@@ -9,7 +9,7 @@ import { useCallback, useMemo } from "react";
 import { styled, useTheme } from "styled-components";
 
 import { Chart } from "./Chart";
-import { InfoBox } from "./InfoBox";
+import { InfoBoxSvg } from "./InfoBoxSvg";
 import Loader from "./Loader";
 import { Bound, ChartEntry, TickDataRaw, ZOOM_LEVELS, ZoomLevels } from "./types";
 
@@ -143,13 +143,13 @@ export function LiquidityChartRangeInput({
   return (
     <AutoColumn gap="md" style={{ minHeight: "200px", width: "100%", marginBottom: "16px" }}>
       {isUninitialized ? (
-        <InfoBox message={t("Your position will appear here.")} icon={<BunnyKnownPlaceholder />} />
+        <InfoBoxSvg message={t("Your position will appear here.")} icon={<BunnyKnownPlaceholder />} />
       ) : isLoading ? (
-        <InfoBox icon={<Loader size="40px" stroke={theme.colors.text} />} />
+        <InfoBoxSvg icon={<Loader size="40px" stroke={theme.colors.text} />} />
       ) : error ? (
-        <InfoBox message={t("Liquidity data not available.")} icon={<ChartDisableIcon width="40px" />} />
+        <InfoBoxSvg message={t("Liquidity data not available.")} icon={<ChartDisableIcon width="40px" />} />
       ) : !formattedData || formattedData.length === 0 || !price ? (
-        <InfoBox message={t("There is no liquidity data.")} icon={<LineGraphIcon width="40px" />} />
+        <InfoBoxSvg message={t("There is no liquidity data.")} icon={<LineGraphIcon width="40px" />} />
       ) : (
         <ChartWrapper>
           <Chart
