@@ -460,6 +460,7 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
               <StyledScanLink
                 useBscCoinFallback={typeof chainId !== 'undefined' && ChainLinkSupportChains.includes(chainId)}
                 href={bsc}
+                id="view-contract"
               >
                 {t('View Contract')}
               </StyledScanLink>
@@ -467,6 +468,7 @@ export const ActionPanelV2: React.FunctionComponent<React.PropsWithChildren<Acti
           </>
         }
       >
+        {/* in use */}
         {shouldUseProxyFarm ? (
           <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
             {(props) => <HarvestAction {...props} />}
