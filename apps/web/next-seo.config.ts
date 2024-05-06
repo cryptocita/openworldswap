@@ -12,6 +12,6 @@ export const SEO: DefaultSeoProps = {
   openGraph: {
     title: "🥞 OpenWorldSwap - Everyone's Favorite DEX",
     description: 'Trade, earn, and own crypto on the all-in-one multichain DEX',
-    images: [{ url: 'https://assets.pancakeswap.finance/web/og/v2/hero.jpg' }],
+    images: [{ url: 'https://app.openworldswap.finance/logo.png' }],
   },
 }
