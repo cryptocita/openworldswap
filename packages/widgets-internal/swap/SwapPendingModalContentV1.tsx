@@ -1,5 +1,5 @@
 import { Currency } from "@pancakeswap/sdk";
-import { ArrowUpIcon, AutoColumn, Box, ColumnCenter, Spinner, Text } from "@pancakeswap/uikit";
+import { ArrowUpIcon, AutoColumn, Box, ColumnCenter, Text } from "@pancakeswap/uikit";
 import { ReactNode } from "react";
 import TokenTransferInfo from "./TokenTransferInfo";
 
@@ -24,6 +24,7 @@ export const SwapPendingModalContentV1: React.FC<SwapPendingModalContentProps> =
 }) => {
   const symbolA = currencyA?.symbol;
   const symbolB = currencyB?.symbol;
+  const size = 128;
 
   return (
     <Box width="100%">
@@ -34,7 +35,9 @@ export const SwapPendingModalContentV1: React.FC<SwapPendingModalContentProps> =
       ) : (
         <Box mb="16px">
           <ColumnCenter>
-            <Spinner />
+            <Box width={size} height={size} position="relative">
+              <img width={size} height={size} src="/logo.png" alt="openworldswap-loader" />
+            </Box>
           </ColumnCenter>
         </Box>
       )}
