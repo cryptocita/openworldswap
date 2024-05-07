@@ -4,6 +4,7 @@ import BigNumber from 'bignumber.js'
 import { BLOCKS_PER_YEAR } from 'config'
 import lpAprs1 from 'config/constants/lpAprs/1.json'
 import lpAprs56 from 'config/constants/lpAprs/56.json'
+import lpAprs7798 from 'config/constants/lpAprs/7798.json'
 
 const getLpApr = (chainId?: number) => {
   switch (chainId) {
@@ -11,6 +12,8 @@ const getLpApr = (chainId?: number) => {
       return lpAprs56
     case ChainId.ETHEREUM:
       return lpAprs1
+    case ChainId.OEX_TESTNET:
+      return lpAprs7798
     default:
       return {}
   }
@@ -77,6 +80,7 @@ export const getFarmApr = (
   const lpRewardsApr = farmAddress
     ? (getLpApr(chainId)[farmAddress?.toLowerCase()] || getLpApr(chainId)[farmAddress]) ?? 0
     : 0 // can get both checksummed or lowercase
+
   return { cakeRewardsApr: cakeRewardsAprAsNumber, lpRewardsApr }
 }
 

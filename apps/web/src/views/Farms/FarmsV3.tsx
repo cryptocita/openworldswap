@@ -219,9 +219,9 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     '0x9892D6bB304D2ec55E9cF6Ecdd422DDc2C08d6Cc',
     '0x4D4320acA6ecE298e126e0cc01dB01CA68b42DdD',
     account,
+    '0x4De88a40bd5334aeCF573022a13C7C32E8086792',
+    '0x8Ce4B67b08c147572c463c894Ff5b540FB58C42a',
   )
-
-  console.log('sdfsdfs userCakeInfo', userCakeInfo)
 
   const mockfarms = [
     {
@@ -251,12 +251,10 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         },
       },
       bCakeUserData: userCakeInfo,
-      tokenAmountTotal: BigNumber('257971.479869311058430764'),
-      quoteTokenAmountTotal: BigNumber('694598.623098821734227532'),
-      lpTotalInQuoteToken: BigNumber(
-        '50028.6559830766276048844450871794348102031442573497416029378722980598268681085286000109473247335921172',
-      ),
-      lpTotalSupply: BigNumber('274125390837263771818982'),
+      tokenAmountTotal: userCakeInfo.tokenAmountTotal.div(10 ** 18),
+      quoteTokenAmountTotal: userCakeInfo.quoteTokenAmountTotal.div(10 ** 18),
+      lpTotalInQuoteToken: userCakeInfo.lpTotalInQuoteToken,
+      lpTotalSupply: userCakeInfo.lpTotalSupply,
       lpTokenPrice: BigNumber('5.06897804356614923382926066133376208667060322561472604639572681079411595248236524'),
       tokenPriceVsQuote: BigNumber('2.6925403670619208950202426701619391830609297854667487465935304622252663088003971'),
       poolWeight: BigNumber('0'),
@@ -384,6 +382,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         const totalLiquidityFromLp = new BigNumber(farm?.lpTotalInQuoteToken ?? 0).times(farm.quoteTokenPriceBusd)
         // Mock 1$ tvl if the farm doesn't have lp staked
         const totalLiquidity = totalLiquidityFromLp.eq(BIG_ZERO) && mockApr ? BIG_ONE : totalLiquidityFromLp
+
         const { cakeRewardsApr, lpRewardsApr } =
           isActive && chainId
             ? getFarmApr(
@@ -396,6 +395,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                 farm.bCakePublicData?.rewardPerSecond,
               )
             : { cakeRewardsApr: 0, lpRewardsApr: 0 }
+
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
