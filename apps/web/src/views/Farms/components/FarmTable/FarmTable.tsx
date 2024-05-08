@@ -166,6 +166,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
 
       if (farm.version === 2) {
         const isBooster = Boolean(farm?.bCakeWrapperAddress)
+
         const row: RowProps = {
           apr: {
             value:

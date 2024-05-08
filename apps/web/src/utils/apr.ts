@@ -77,6 +77,7 @@ export const getFarmApr = (
   if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
     cakeRewardsAprAsNumber = cakeRewardsApr.toNumber()
   }
+
   const lpRewardsApr = farmAddress
     ? (getLpApr(chainId)[farmAddress?.toLowerCase()] || getLpApr(chainId)[farmAddress]) ?? 0
     : 0 // can get both checksummed or lowercase

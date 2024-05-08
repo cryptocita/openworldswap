@@ -1,3 +1,5 @@
+import { getFullDecimalMultiplier } from '@pancakeswap/farms/src/v2/getFullDecimalMultiplier'
+import { BIG_TWO } from '@pancakeswap/utils/bigNumber'
 import { useReadContracts } from '@pancakeswap/wagmi'
 import BigNumber from 'bignumber.js'
 import { lpTokenABI } from 'config/abi/lpTokenAbi'
@@ -111,9 +113,54 @@ export function useCakeUserInfo(
         functionName: 'balanceOf',
         args: [lpAddress as `0x${string}`],
       },
+
+      {
+        chainId,
+        abi: lpTokenABI,
+        address: tokenAddress!,
+        functionName: 'decimals',
+      },
+      {
+        chainId,
+        abi: lpTokenABI,
+        address: quoteTokenAddress!,
+        functionName: 'decimals',
+      },
     ],
     watch: true,
   })
+
+  const lpTotalSupplyBN = BigNumber(results?.[7].result?.toString() || '')
+  const lpTokenBalanceMC = BigNumber(results?.[9].result?.toString() || '')
+
+  // Ratio in % of LP tokens that are staked in the MC, vs the total number in circulation
+  const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupplyBN))
+  const tokenBalanceLP = BigNumber(results?.[11].result?.toString() || '')
+
+  const quoteTokenBalanceLP = BigNumber(results?.[10].result?.toString() || '')
+
+  const tokenDecimals = results?.[12].result || 18
+  const quoteTokenDecimals = results?.[13].result || 18
+
+  // Raw amount of token in the LP, including those not staked
+  const tokenAmountTotal = new BigNumber(tokenBalanceLP).div(getFullDecimalMultiplier(tokenDecimals))
+  const quoteTokenAmountTotal = new BigNumber(quoteTokenBalanceLP).div(getFullDecimalMultiplier(quoteTokenDecimals))
+
+  // Amount of quoteToken in the LP that are staked in the MC
+  const quoteTokenAmountMc = quoteTokenAmountTotal.times(lpTokenRatio)
+
+  // Total staked in LP, in quote token value
+  const lpTotalInQuoteToken = quoteTokenAmountMc.times(BIG_TWO)
+
+  const rewardPerSecond = BigNumber(results?.[3].result?.toString() || '').div(10 ** 18)
+
+  // return {
+  //   tokenAmountTotal: tokenAmountTotal.toJSON(),
+  //   quoteTokenAmountTotal: quoteTokenAmountTotal.toJSON(),
+  //   lpTotalSupply: lpTotalSupplyBN.toJSON(),
+  //   lpTotalInQuoteToken: lpTotalInQuoteToken.toJSON(),
+  //   tokenPriceVsQuote: quoteTokenAmountTotal.div(tokenAmountTotal).toJSON(),
+  // }
 
   return {
     allowance: BigNumber(results?.[0].result?.toString() || ''),
@@ -122,16 +169,18 @@ export function useCakeUserInfo(
     boosterMultiplier: Number(results?.[2].result?.[2]),
     boostedAmounts: BigNumber(results?.[2].result?.[3]?.toString() || ''),
     earnings: BigNumber(results?.[8].result?.toString() || ''),
-    rewardPerSecond: 0.2,
+    rewardPerSecond: Number(rewardPerSecond),
     startTimestamp: Number(results?.[4].result),
     endTimestamp: Number(results?.[5].result),
     boosterContractAddress: results?.[6].result,
     lpTotalSupply: BigNumber(results?.[7].result?.toString() || ''),
     stakedLpSupply: BigNumber(results?.[9].result?.toString() || ''),
-    lpTotalInQuoteToken: BigNumber(results?.[10].result?.toString() || '').multipliedBy(2),
-    quoteTokenAmountTotal: BigNumber(results?.[10].result?.toString() || ''),
-    tokenAmountTotal: BigNumber(results?.[11].result?.toString() || ''),
+    lpTotalInQuoteToken,
+    tokenPriceVsQuote: quoteTokenAmountTotal.div(tokenAmountTotal),
+    quoteTokenAmountTotal,
+    tokenAmountTotal,
     loading: isLoading,
+    isRewardInRange: true,
   }
 
   // lpTotalSupply={lpTotalSupply ?? BIG_ZERO}
