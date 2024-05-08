@@ -55,6 +55,8 @@ export const BLOCKS_CLIENT_WITH_CHAIN = BLOCKS_SUBGRAPHS
 
 export const ASSET_CDN = 'https://assets.pancakeswap.finance'
 
+export const PUBLIC_CDN = 'https://app.openworldswap.finance'
+
 export const V3_SUBGRAPH_URLS = {
   ...V3_SUBGRAPHS,
   // [ChainId.BSC]: `${EXPLORER_API}/subgraphs/v3/bsc/graphql`,

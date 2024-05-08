@@ -10,8 +10,8 @@ export const SEO: DefaultSeoProps = {
     site: '@OpenWorldSwap',
   },
   openGraph: {
-    title: "🥞 OpenWorldSwap - Everyone's Favorite DEX",
+    title: "OpenWorldSwap - Everyone's Favorite DEX",
     description: 'Trade, earn, and own crypto on the all-in-one multichain DEX',
-    images: [{ url: 'https://app.openworldswap.finance/logo.png' }],
+    images: [{ url: 'https://app.openworldswap.finance/ows-seo-banner.jpg' }],
   },
 }
