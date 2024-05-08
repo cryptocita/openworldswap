@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import { publicClient } from 'utils/wagmi'
 import { erc20Abi, formatUnits } from 'viem'
 import { useReadContracts } from 'wagmi'
+import { useActiveChainId } from './useActiveChainId'
 
 // for migration to bignumber.js to avoid breaking changes
 export const useCakePrice = ({ enabled = true } = {}) => {
@@ -26,6 +27,7 @@ export const useCakePrice = ({ enabled = true } = {}) => {
   const lpAddress = '0x4D4320acA6ecE298e126e0cc01dB01CA68b42DdD'
   const quoteTokenAddress = '0x8Ce4B67b08c147572c463c894Ff5b540FB58C42a'
   const tokenAddress = '0x4De88a40bd5334aeCF573022a13C7C32E8086792'
+  const { chainId } = useActiveChainId()
 
   const { data: results, isLoading } = useReadContracts({
     query: {
@@ -33,23 +35,27 @@ export const useCakePrice = ({ enabled = true } = {}) => {
     },
     contracts: [
       {
+        chainId,
         abi: erc20Abi,
         address: tokenAddress!,
         functionName: 'balanceOf',
         args: [lpAddress as `0x${string}`],
       },
       {
+        chainId,
         abi: erc20Abi,
         address: quoteTokenAddress!,
         functionName: 'balanceOf',
         args: [lpAddress as `0x${string}`],
       },
       {
+        chainId,
         abi: erc20Abi,
         address: tokenAddress!,
         functionName: 'decimals',
       },
       {
+        chainId,
         abi: erc20Abi,
         address: quoteTokenAddress!,
         functionName: 'decimals',
@@ -65,8 +71,8 @@ export const useCakePrice = ({ enabled = true } = {}) => {
       const tokenDecimals = results?.[2].result || 18
       const quoteTokenDecimals = results?.[3].result || 18
 
-      const tokenAmountTotal = new BigNumber(tokenBalanceLP).div(getFullDecimalMultiplier(tokenDecimals))
-      const quoteTokenAmountTotal = new BigNumber(quoteTokenBalanceLP).div(getFullDecimalMultiplier(quoteTokenDecimals))
+      const tokenAmountTotal = tokenBalanceLP.div(getFullDecimalMultiplier(tokenDecimals))
+      const quoteTokenAmountTotal = quoteTokenBalanceLP.div(getFullDecimalMultiplier(quoteTokenDecimals))
 
       return quoteTokenAmountTotal.div(tokenAmountTotal)
     }
