@@ -13,7 +13,7 @@ export const RewardPerDay: React.FC<{ rewardPerSec: number; symbol?: string } & 
     }, [rewardPerSec])
     return (
       <Tag
-        startIcon={<CakeOutlineIcon color={theme.colors.secondary} width={props.scale === 'sm' ? 13 : undefined} />}
+        // startIcon={<CakeOutlineIcon color={theme.colors.secondary} width={props.scale === 'sm' ? 13 : undefined} />}
         variant="secondary"
         {...props}
       >
