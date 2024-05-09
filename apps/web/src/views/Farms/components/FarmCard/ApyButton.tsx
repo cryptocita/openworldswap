@@ -137,11 +137,11 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       </ul>
       <br />
       <Text>
-        {t('Calculated using the total active liquidity staked versus the CAKE reward emissions for the farm.')}
+        {t('Calculated using the total active liquidity staked versus the OWS reward emissions for the farm.')}
       </Text>
       {isBooster && (
         <Text mt="15px">
-          {t('bCAKE only boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
+          {t('bOWS only boosts Farm APR. Actual boost multiplier is subject to farm and pool conditions.')}
         </Text>
       )}
       <Text mt="15px">{t('APRs for individual positions may vary depending on the configs.')}</Text>
