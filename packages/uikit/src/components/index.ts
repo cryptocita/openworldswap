@@ -24,6 +24,7 @@ export * from "./DynamicSection";
 export * from "./ExpandableSectionButton";
 export * from "./FAQs";
 export * from "./FallingBunnies";
+export * from "./GlassPanel";
 export * from "./Heading";
 export * from "./Image";
 export * from "./Input";

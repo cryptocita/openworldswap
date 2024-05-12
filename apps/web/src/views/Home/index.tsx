@@ -1,7 +1,9 @@
 import { Box, PageSection, useMatchBreakpoints } from '@pancakeswap/uikit'
 import { styled } from 'styled-components'
 import { FAQsSection } from './components/FAQs'
+import { GlassPanelSection } from './components/GlassPanel'
 import Hero from './components/Hero'
+import { KeyFeatures } from './components/KeyFeatures'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -19,7 +21,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
 
   return (
     <Box style={{ width: isMobile ? '100vw' : 'calc(100vw - 8px)', overflow: 'hidden', boxSizing: 'border-box' }}>
-      <style jsx global>
+      {/* <style jsx global>
         {`
           #home-1 .page-bg {
             background: linear-gradient(139.73deg, #e6fdff 0%, #f3efff 100%);
@@ -53,7 +55,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             fill: #0b4576;
           }
         `}
-      </style>
+      </style> */}
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%', overflow: 'visible', padding: '16px' } }}
         containerProps={{
@@ -62,98 +64,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        {/* <MultipleBanner /> */}
         <Hero />
       </StyledHeroSection>
+      <KeyFeatures />
+      <GlassPanelSection />
       <FAQsSection />
-      {/* <PageSection
-        innerProps={{ style: { margin: '0', width: '100%' } }}
-        containerProps={{
-          id: 'home-2',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <MetricsSection />
-      </PageSection> */}
-      {/* <PageSection
-        innerProps={{ style: { ...HomeSectionContainerStyles, maxWidth: 'auto' } }}
-        background={theme.colors.background}
-        containerProps={{
-          id: 'home-4',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper top>
-            <WedgeTopLeft />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <EcoSystemSection />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        containerProps={{
-          id: 'home4-2',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <CakeSection />
-        <Flex style={{ gap: 5 }} justifyContent="center" mt="40px">
-          <Text fontSize={24} bold>
-            {t('CAKE')}
-          </Text>
-          <Text fontSize={24} bold color="secondary">
-            {t('Figures')}
-          </Text>
-        </Flex>
-        <CakeDataRow />
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper id="bottom-wedge4-2">
-            <WedgeBottomRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        containerProps={{
-          id: 'home-3',
-        }}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <RightTopBox />
-        <CommunitySection />
-      </PageSection>
-      <PageSection
-        innerProps={{
-          style: {
-            ...HomeSectionContainerStyles,
-            maxWidth: '1400px',
-          },
-        }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <NewsSection />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <Footer />
-      </PageSection> */}
     </Box>
   )
 }

@@ -29,7 +29,7 @@ const StyledCollpase = styled("div")`
 
 const StyledButton = styled("button")`
   cursor: pointer;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   background-color: transparent;
   border: none;
   font-size: 25px;
