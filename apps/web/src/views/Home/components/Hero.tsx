@@ -214,6 +214,8 @@ const Hero = () => {
         mt={['50px', null, 0]}
         pl={['0px', '0px', '0px', '30px']}
         id="homepage-hero"
+        height={['60vh', null, null, '80vh']}
+        mb={['24px', null, null, '0']}
       >
         <Flex flex="1" flexDirection="column">
           <Text textAlign={isMobile || isMd ? 'center' : 'left'} pr={isMobile ? 0 : '10px'} mb="16px">
@@ -232,7 +234,7 @@ const Hero = () => {
           </Text>
           <Text
             mb="24px"
-            color={theme.isDark ? '#B8ADD2' : '#7A6EAA'}
+            color={theme.isDark ? '#6eaa95' : '#6eaa95'}
             maxWidth={600}
             fontSize={['20px', '20px', null, '24px']}
             textAlign={isMobile ? 'center' : 'left'}
@@ -255,7 +257,7 @@ const Hero = () => {
             </NextLinkFromReactRouter>
           </Flex>
         </Flex>
-        <Flex
+        {/* <Flex
           height={['100%', null, null, '100%']}
           width={['100%', null, null, '100%']}
           flex={[null, null, null, '1']}
@@ -294,7 +296,7 @@ const Hero = () => {
               )}
             </CakeBox>
           </BunnyWrapper>
-        </Flex>
+        </Flex> */}
       </Flex>
     </>
   )

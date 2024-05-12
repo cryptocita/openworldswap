@@ -2,7 +2,7 @@ import { Flex, Text } from '@pancakeswap/uikit'
 import { styled } from 'styled-components'
 
 const StyledText = styled(Text)`
-  color: white;
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 32px;
   text-align: center;
   margin-bottom: 2rem;
@@ -58,33 +58,37 @@ const StyledGrid = styled('div')`
   }
 `
 
+const StyledContainer = styled(Flex)`
+  background-color: ${({ theme }) => theme.colors.background};
+`
+
 const features = [
   {
-    title: 'lorem ipsem dolor samet',
+    title: 'Token Swaps',
     description:
-      'lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet ',
+      'OpenWorldSwap lets users trade without the need to go through a Centralized Exchange like Binance. Everything you trade on OpenWorldSwap is routed directly through your own wallet.',
   },
   {
-    title: 'lorem ipsem dolor samet',
+    title: 'Liquidity Pools',
     description:
-      'lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet ',
+      'OpenWorldSwap Liquidity provision rewards users with LP Tokens, earning them trading fees and ensuring there is always enough liquidity for trades.',
   },
   {
-    title: 'lorem ipsem dolor samet',
+    title: 'Yield Farms',
     description:
-      'lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet ',
+      'Yield Farms allow you to stake Liquidity Pool (LP) tokens to earn OWS on OpenWorldSwap. The LP tokens come from Liquidity pools by adding tokens to provide liquidity.',
   },
   {
-    title: 'lorem ipsem dolor samet',
+    title: 'Token Sales',
     description:
-      'lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet lorem ipsem dolor samet ',
+      'The OpenWorldSwap Token Sale is a DEX offering that helps new projects issue their tokens, gain liquidity, and raise funds.',
   },
 ]
 
 export const KeyFeatures = () => {
   return (
     <>
-      <Flex justifyContent="center" flexDirection="column" px="3rem" py="50px">
+      <StyledContainer justifyContent="center" flexDirection="column" px="3rem" py="50px">
         <StyledText display="inline-block" fontWeight={600} lineHeight="110%" textAlign="center">
           Key Features
         </StyledText>
@@ -98,7 +102,7 @@ export const KeyFeatures = () => {
             )
           })}
         </StyledGrid>
-      </Flex>
+      </StyledContainer>
     </>
   )
 }

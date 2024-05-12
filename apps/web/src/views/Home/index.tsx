@@ -21,13 +21,13 @@ const Home: React.FC<React.PropsWithChildren> = () => {
 
   return (
     <Box style={{ width: isMobile ? '100vw' : 'calc(100vw - 8px)', overflow: 'hidden', boxSizing: 'border-box' }}>
-      {/* <style jsx global>
+      <style jsx global>
         {`
           #home-1 .page-bg {
             background: linear-gradient(139.73deg, #e6fdff 0%, #f3efff 100%);
           }
           [data-theme='dark'] #home-1 .page-bg {
-            background: radial-gradient(103.12% 50% at 50% 50%, #21193a 0%, #191326 100%);
+            background: radial-gradient(103.12% 50% at 50% 50%, #193a27 0%, #10180c 100%);
           }
           #home-2 .page-bg {
             background: linear-gradient(180deg, #ffffff 22%, #d7caec 100%);
@@ -55,7 +55,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             fill: #0b4576;
           }
         `}
-      </style> */}
+      </style>
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%', overflow: 'visible', padding: '16px' } }}
         containerProps={{

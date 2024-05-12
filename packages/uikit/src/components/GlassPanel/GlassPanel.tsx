@@ -9,14 +9,14 @@ const StyledBox = styled(Flex)`
   border-radius: 20px 0px 0px 20px;
   padding: 30px 0px;
   padding-left: 40px;
-  background: linear-gradient(93deg, rgb(29 35 53) -42.6%, rgb(0 0 0) 127.2%);
+  background: linear-gradient(93deg, rgb(29 53 43) -42.6%, rgb(0 0 0) 127.2%);
   max-width: 1400px;
   margin-left: auto;
 `;
 
 const StyledHeading = styled(Text)`
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 30px;
   line-height: 38px;
   margin-bottom: 20px;
@@ -41,19 +41,20 @@ const StyledDescription = styled(Text)`
 
 const StyledButton = styled(Button)`
   color: ${({ theme }) => theme.colors.secondary};
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   background-color: transparent;
   font-size: 16px;
   max-width: max-content;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0px 35px;
 `;
 
-const GlassPanel: React.FC<PropsWithChildren<{ heading: string; desc: string; buttonText: string }>> = ({
+const GlassPanel: React.FC<PropsWithChildren<{ heading: string; desc: string; buttonText: string; link: string }>> = ({
   heading,
   desc,
   buttonText,
+  link,
 }) => {
   return (
     <>
@@ -61,7 +62,9 @@ const GlassPanel: React.FC<PropsWithChildren<{ heading: string; desc: string; bu
         <Flex flexDirection="column">
           <StyledHeading>{heading}</StyledHeading>
           <StyledDescription>{desc}</StyledDescription>
-          <StyledButton marginTop="1.8rem">{buttonText}</StyledButton>
+          <a href={link} target="_blank" style={{ maxWidth: "max-content" }}>
+            <StyledButton marginTop="1.8rem">{buttonText}</StyledButton>
+          </a>
         </Flex>
       </StyledBox>
     </>
