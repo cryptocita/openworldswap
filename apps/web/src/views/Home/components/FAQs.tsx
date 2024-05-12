@@ -36,9 +36,10 @@ const faqsList = [
 
 const StyledHeading = styled(Text)`
   color: ${({ theme }) => theme.colors.primary};
-  padding-bottom: 4rem;
+  margin-bottom: 4rem;
   font-size: 30px;
   ${({ theme }) => theme.mediaQueries.sm} {
+    margin-bottom: 5rem;
     font-size: 40px;
   }
   ${({ theme }) => theme.mediaQueries.lg} {
@@ -59,13 +60,15 @@ const StyledContainer = styled('div')`
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 50px 3rem;
     font-size: 40px;
-    margin-bottom: 5rem;
+    padding-bottom: 100px;
   }
   ${({ theme }) => theme.mediaQueries.lg} {
+    padding-bottom: 100px;
     padding: 50px 3rem;
     font-size: 55px;
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
+    padding-bottom: 100px;
     font-size: 72px;
   }
 `
