@@ -1,24 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, PageSection, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import useTheme from 'hooks/useTheme'
+import { Box, PageSection, useMatchBreakpoints } from '@pancakeswap/uikit'
 import { styled } from 'styled-components'
-import MultipleBanner from './components/Banners/MultipleBanner'
-import CakeDataRow from './components/CakeDataRow'
-import CakeSection from './components/CakeSection'
-import CommunitySection from './components/CommunitySection'
-import { RightTopBox } from './components/CommunitySection/ImagesOnBg'
-import EcoSystemSection from './components/EcoSystemSection'
-import Footer from './components/Footer'
+import { FAQsSection } from './components/FAQs'
 import Hero from './components/Hero'
-import MetricsSection from './components/MetricsSection'
-import { NewsSection } from './components/NewsSection'
-import {
-  InnerWedgeWrapper,
-  OuterWedgeWrapper,
-  WedgeBottomRight,
-  WedgeTopLeft,
-  WedgeTopRight,
-} from './components/WedgeSvgs'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -29,9 +12,9 @@ const StyledHeroSection = styled(PageSection)`
 `
 
 const Home: React.FC<React.PropsWithChildren> = () => {
-  const { theme } = useTheme()
-  const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px', padding: '0px 16px' }
-  const { t } = useTranslation()
+  // const { theme } = useTheme()
+  // const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px', padding: '0px 16px' }
+  // const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
 
   return (
@@ -79,10 +62,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        <MultipleBanner />
+        {/* <MultipleBanner /> */}
         <Hero />
       </StyledHeroSection>
-      <PageSection
+      <FAQsSection />
+      {/* <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         containerProps={{
           id: 'home-2',
@@ -91,8 +75,8 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         hasCurvedDivider={false}
       >
         <MetricsSection />
-      </PageSection>
-      <PageSection
+      </PageSection> */}
+      {/* <PageSection
         innerProps={{ style: { ...HomeSectionContainerStyles, maxWidth: 'auto' } }}
         background={theme.colors.background}
         containerProps={{
@@ -169,7 +153,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         hasCurvedDivider={false}
       >
         <Footer />
-      </PageSection>
+      </PageSection> */}
     </Box>
   )
 }

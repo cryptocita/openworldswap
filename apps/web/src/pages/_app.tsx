@@ -159,7 +159,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const ShowMenu = Component.mp ? Fragment : Menu
   const isShowScrollToTopButton = Component.isShowScrollToTopButton || true
   const shouldScreenWallet = Component.screen || false
-  const isShowV4IconButton = Component.isShowV4IconButton || false
+  const isShowV4IconButton = false
 
   return (
     <ProductionErrorBoundary>

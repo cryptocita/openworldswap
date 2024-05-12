@@ -46,6 +46,7 @@ const StyledContainer = styled('div')`
   flex-direction: column;
   align-items: center;
   padding: 50px 2rem;
+  background-color: ${({ theme }) => theme.colors.background};
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 50px 3rem;
     font-size: 40px;
