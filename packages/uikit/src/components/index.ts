@@ -22,6 +22,7 @@ export * from "./Dropdown";
 export * from "./DropdownMenu";
 export * from "./DynamicSection";
 export * from "./ExpandableSectionButton";
+export * from "./FAQs";
 export * from "./FallingBunnies";
 export * from "./Heading";
 export * from "./Image";
