@@ -30,8 +30,8 @@ const ifos: Ifo[] = [
     releaseAt: 1715566265,
     icoToken: dfgToken,
     version: 1,
-    audit: true,
-    kyc: true,
+    audit: false,
+    kyc: false,
   },
   {
     id: 'ows-private-sale',

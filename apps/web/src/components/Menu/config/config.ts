@@ -96,7 +96,7 @@ const config: (
           supportChainIds: IFO_SUPPORTED_CHAINS,
         },
         {
-          label: t('Tokenpad'),
+          label: t('Token Creation'),
           href: '/launchpad/tokenpad',
           supportChainIds: IFO_SUPPORTED_CHAINS,
         },

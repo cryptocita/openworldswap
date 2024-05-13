@@ -66,7 +66,7 @@ export const TokenpadLayout = ({ children }) => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]} alignItems="center">
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Tokenpad')}
+              {t('Token Creation')}
             </Heading>
             <Heading scale="lg" color="text">
               {t('Create new token with your own tokenomics.')}
