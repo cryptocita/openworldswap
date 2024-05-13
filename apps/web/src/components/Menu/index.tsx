@@ -1,7 +1,6 @@
 import { languageList, useTranslation } from '@pancakeswap/localization'
 import { Text, Menu as UikitMenu, footerLinks, useModal } from '@pancakeswap/uikit'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { usePhishingBanner } from '@pancakeswap/utils/user'
 import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
 import USCitizenConfirmModal from 'components/Modal/USCitizenConfirmModal'
 import { NetworkSwitcher } from 'components/NetworkSwitcher'
@@ -108,7 +107,7 @@ const Menu = (props) => {
     },
     [perpConfirmed, optionsConfirmed, onPerpConfirmModalPresent, onOptionsConfirmModalPresent],
   )
-  const [showPhishingWarningBanner] = usePhishingBanner()
+  // const [showPhishingWarningBanner] = usePhishingBanner()
 
   const menuItems = useMenuItems({
     onClick: onSubMenuClick,
@@ -127,12 +126,14 @@ const Menu = (props) => {
 
   return (
     <>
-      <BackgroundContainer>
-        {/* <img src="/images/tyche/background.svg" alt="Hero Background" /> */}
-        <video autoPlay muted loop>
-          <source src="/bg.mp4" />
-        </video>
-      </BackgroundContainer>
+      {activeMenuItem?.href !== '/' && (
+        <BackgroundContainer>
+          {/* <img src="/images/tyche/background.svg" alt="Hero Background" /> */}
+          <video autoPlay muted loop>
+            <source src="/bg.mp4" />
+          </video>
+        </BackgroundContainer>
+      )}
       <UikitMenu
         linkComponent={LinkComponent}
         rightSide={

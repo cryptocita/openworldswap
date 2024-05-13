@@ -43,8 +43,6 @@ export function CurrencyLogo({
     return [`https://app.openworldswap.finance/images/tokens/${currency?.symbol}.png`];
   }, [currency, uriLocations, useTrustWalletUrl]);
 
-  console.log(srcs);
-
   if (currency?.isNative) {
     if (currency.chainId === ChainId.BSC) {
       return <BinanceIcon width={size} style={style} {...props} />;
