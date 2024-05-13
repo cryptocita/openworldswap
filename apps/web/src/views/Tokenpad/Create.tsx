@@ -59,6 +59,22 @@ const StyledInput = styled(Input)<{ error?: boolean }>`
   color: ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.text)};
 `
 
+const GlassContainer = styled('div')`
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: ${({ theme }) => theme.colors.glass};
+  border-radius: 24px;
+  border: 1px solid rgb(166 216 157 / 13%);
+  padding: 30px;
+`
+const ColoredContainer = styled('div')`
+  background-color: ${({ theme }) => theme.colors.backgroundDisabled};
+  border-radius: 16px;
+  border: 1px solid rgb(166 216 157 / 13%);
+  padding: 30px;
+  height: max-content;
+`
+
 const TokenCreate = () => {
   const [tokenCreationProps, setTokenCreationProps] = useState<TokenCreationProps>({
     name: '',
@@ -186,7 +202,7 @@ const TokenCreate = () => {
     <div>
       <LaunchIfoCallout>
         <div>
-          <div>
+          <GlassContainer>
             <Title as="h2">{t('Please configure your tokenomics')}</Title>
             <Text>Token name</Text>
             <StyledInput
@@ -286,9 +302,9 @@ const TokenCreate = () => {
             <Button disabled={!account || pendingTx} onClick={handleDeploy}>
               {t('Deploy token')}
             </Button>
-          </div>
+          </GlassContainer>
         </div>
-        <div>
+        <ColoredContainer>
           {/* <Image src="/images/ifos/zombie.png" alt="ifo bunny" width={300} height={150} mt="24px" mb="24px" /> */}
           <Heading mb="16px">{t('Available tokenomics')}:</Heading>
           <List>
@@ -308,7 +324,7 @@ const TokenCreate = () => {
             </Caution>
             <li>{t('Marketing wallet to receive tax.')}</li>
           </List>
-        </div>
+        </ColoredContainer>
       </LaunchIfoCallout>
     </div>
   )

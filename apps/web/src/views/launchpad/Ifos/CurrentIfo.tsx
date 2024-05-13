@@ -23,6 +23,15 @@ const LaunchIfoCallout = styled(BaseLayout)`
   }
 `
 
+const GlassContainer = styled('div')`
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: ${({ theme }) => theme.colors.glass};
+  border-radius: 24px;
+  border: 1px solid rgb(166 216 157 / 13%);
+  padding: 30px;
+`
+
 const List = styled.ul`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 16px;
@@ -63,7 +72,7 @@ const Ifo = () => {
       </IfoCards> */}
 
       <LaunchIfoCallout>
-        <div>
+        <GlassContainer>
           <Title as="h2">{t('How to take part')}</Title>
           <Heading mb="16px">{t('Before Sale')}:</Heading>
           <List>
@@ -89,8 +98,8 @@ const Ifo = () => {
               {t('Read more')}
             </Button>
           </Text> */}
-        </div>
-        <div>
+        </GlassContainer>
+        <GlassContainer>
           {/* <Image src="/images/ifos/zombie.png" alt="ifo bunny" width={300} height={150} mt="24px" mb="24px" /> */}
           <div>
             <Title as="h2">{t('Want to run your launchpad with us?')}</Title>
@@ -103,7 +112,7 @@ const Ifo = () => {
               {t('Apply to launch')}
             </Button>
           </div>
-        </div>
+        </GlassContainer>
       </LaunchIfoCallout>
     </div>
   )
