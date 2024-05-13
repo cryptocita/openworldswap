@@ -1,3 +1,4 @@
+import { SUPPORTED_CHAIN_IDS as IFO_SUPPORTED_CHAINS } from '@pancakeswap/ifos'
 import { ContextApi } from '@pancakeswap/localization'
 import { SUPPORTED_CHAIN_IDS as POOL_SUPPORTED_CHAINS } from '@pancakeswap/pools'
 import {
@@ -5,6 +6,7 @@ import {
   EarnFillIcon,
   EarnIcon,
   HomeIcon,
+  LightBulbIcon,
   MenuItemsType,
   SwapFillIcon,
   SwapIcon,
@@ -76,6 +78,27 @@ const config: (
           label: t('Pools'),
           href: '/pools',
           supportChainIds: POOL_SUPPORTED_CHAINS,
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('Launchpad'),
+      href: '/launchpad',
+      showOnMobile: true,
+      icon: LightBulbIcon,
+      fillIcon: LightBulbIcon,
+      supportChainIds: IFO_SUPPORTED_CHAINS,
+      image: '/images/ifos/ifo-bunny.png',
+      items: [
+        {
+          label: t('Launchpad'),
+          href: '/launchpad',
+          supportChainIds: IFO_SUPPORTED_CHAINS,
+        },
+        {
+          label: t('Tokenpad'),
+          href: '/launchpad/tokenpad',
+          supportChainIds: IFO_SUPPORTED_CHAINS,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },

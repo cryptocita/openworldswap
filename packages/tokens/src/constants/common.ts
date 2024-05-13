@@ -239,6 +239,17 @@ export const CAKE = {
   ),
 }
 
+export const OWS = {
+  [ChainId.OEX_TESTNET]: new ERC20Token(
+    ChainId.OEX_TESTNET,
+    '0x4De88a40bd5334aeCF573022a13C7C32E8086792',
+    18,
+    'OWS',
+    'OpenWorldSwap Token',
+    'https://pancakeswap.finance/',
+  ),
+}
+
 export const USDC = {
   [ChainId.BSC]: USDC_BSC,
   [ChainId.BSC_TESTNET]: USDC_TESTNET,

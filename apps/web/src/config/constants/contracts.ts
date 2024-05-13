@@ -12,6 +12,10 @@ export default {
     [ChainId.BSC]: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
     [ChainId.OEX_TESTNET]: '0xb915Ac86EfeB25c2096eeaE28046288792d72f47',
   },
+  tokenFactory: {
+    [ChainId.POLYGON_ZKEVM]: '0x31469A6f1052698c61813ad10Ce6038d17c759E7',
+    [ChainId.OEX_TESTNET]: '0x6d733Aa027214659d2b04062474a0BE329Ac0ceE',
+  },
   masterChefV3: masterChefV3Addresses,
   masterChefV1: {
     [ChainId.BSC_TESTNET]: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',

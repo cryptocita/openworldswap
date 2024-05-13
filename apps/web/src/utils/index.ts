@@ -59,7 +59,7 @@ export function getBscScanLinkForNft(collectionAddress: string | undefined, toke
 }
 
 // add 10%
-export function calculateGasMargin(value: bigint, margin = 1000n): bigint {
+export function calculateGasMargin(value: bigint, margin = 8000n): bigint {
   return (value * (10000n + margin)) / 10000n
 }
 

@@ -1,10 +1,9 @@
-import { useEffect, useMemo } from 'react'
-import { SubMenuItems, useModal } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
-import { useRouter } from 'next/router'
-import { useUserNotUsCitizenAcknowledgement, IdType } from 'hooks/useUserIsUsCitizenAcknowledgement'
+import { SubMenuItems, useModal } from '@pancakeswap/uikit'
 import USCitizenConfirmModal from 'components/Modal/USCitizenConfirmModal'
-import Hero from './components/Hero'
+import { IdType } from 'hooks/useUserIsUsCitizenAcknowledgement'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 import IfoProvider from './contexts/IfoContext'
 
 export const IfoPageLayout = ({ children }) => {
@@ -12,7 +11,7 @@ export const IfoPageLayout = ({ children }) => {
   const router = useRouter()
   const isExact = router.route === '/ifo'
 
-  const [userNotUsCitizenAcknowledgement] = useUserNotUsCitizenAcknowledgement(IdType.IFO)
+  const [userNotUsCitizenAcknowledgement] = [true] // useUserNotUsCitizenAcknowledgement(IdType.IFO)
   const [onUSCitizenModalPresent] = useModal(
     <USCitizenConfirmModal
       title={t('OpenWorldSwap IFOs')}
@@ -29,15 +28,15 @@ export const IfoPageLayout = ({ children }) => {
     'usCitizenConfirmModal',
   )
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!userNotUsCitizenAcknowledgement) {
-        onUSCitizenModalPresent()
-      }
-    }, 2000)
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (!userNotUsCitizenAcknowledgement) {
+  //       onUSCitizenModalPresent()
+  //     }
+  //   }, 2000)
 
-    return () => clearTimeout(timer)
-  }, [userNotUsCitizenAcknowledgement, onUSCitizenModalPresent])
+  //   return () => clearTimeout(timer)
+  // }, [userNotUsCitizenAcknowledgement, onUSCitizenModalPresent])
 
   const subMenuItems = useMemo(
     () => [
@@ -56,7 +55,7 @@ export const IfoPageLayout = ({ children }) => {
   return (
     <IfoProvider>
       <SubMenuItems items={subMenuItems} activeItem={isExact ? '/ifo' : '/ifo/history'} />
-      <Hero />
+      {/* <Hero /> */}
       {children}
     </IfoProvider>
   )

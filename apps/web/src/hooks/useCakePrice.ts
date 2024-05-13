@@ -60,13 +60,23 @@ export const useCakePrice = ({ enabled = true } = {}) => {
         address: quoteTokenAddress!,
         functionName: 'decimals',
       },
+      {
+        chainId,
+        abi: chainlinkOracleABI,
+        address: chainlinkOracleCAKE[ChainId.BSC],
+        functionName: 'latestAnswer',
+      },
     ],
   })
 
   const price = useMemo(() => {
     if (!isLoading && results) {
-      const tokenBalanceLP = BigNumber(results?.[0].result?.toString() || '')
-      const quoteTokenBalanceLP = BigNumber(results?.[1].result?.toString() || '')
+      if (chainId === ChainId.BSC) {
+        const lastAnswer = BigNumber(results?.[4].result?.toString() || '0')
+        return lastAnswer.div(getFullDecimalMultiplier(8)) // formatUnits(results?.[4].result, 8)
+      }
+      const tokenBalanceLP = BigNumber(results?.[0].result?.toString() || '0')
+      const quoteTokenBalanceLP = BigNumber(results?.[1].result?.toString() || '0')
 
       const tokenDecimals = results?.[2].result || 18
       const quoteTokenDecimals = results?.[3].result || 18
@@ -77,7 +87,7 @@ export const useCakePrice = ({ enabled = true } = {}) => {
       return quoteTokenAmountTotal.div(tokenAmountTotal)
     }
     return BIG_ZERO
-  }, [isLoading, results])
+  }, [isLoading, results, chainId])
 
   return price
 

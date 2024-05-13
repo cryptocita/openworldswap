@@ -85,7 +85,7 @@ const Hero = () => {
   return (
     <Box mb="8px">
       <StyledHero py={['14px', '14px', '40px']} minHeight={['212px', '212px', '197px']}>
-        <HeaderBunny />
+        {/* <HeaderBunny /> */}
         <Container position="relative" zIndex="2">
           <Flex
             justifyContent="space-between"

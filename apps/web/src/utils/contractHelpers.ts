@@ -33,6 +33,7 @@ import {
   getRevenueSharingPoolGatewayAddress,
   getRevenueSharingVeCakeAddress,
   getStableSwapNativeHelperAddress,
+  getTokenFactoryAddress,
   getTradingCompetitionAddressEaster,
   getTradingCompetitionAddressFanToken,
   getTradingCompetitionAddressMoD,
@@ -111,6 +112,8 @@ import {
   erc721Abi,
   getContract as viemGetContract,
 } from 'viem'
+
+import tokenFactoryAbi from 'config/abi/tokenFactory.json'
 
 export const getContract = <TAbi extends Abi | readonly unknown[], TWalletClient extends WalletClient>({
   abi,
@@ -418,6 +421,15 @@ export const getMasterChefContract = (signer?: WalletClient, chainId?: number) =
   return getContract({
     abi: masterChefV2ABI,
     address: getMasterChefV2Address(chainId),
+    chainId,
+    signer,
+  })
+}
+
+export const getTokenFactoryContract = (signer?: WalletClient, chainId?: number) => {
+  return getContract({
+    abi: tokenFactoryAbi as Abi,
+    address: getTokenFactoryAddress(chainId ?? ChainId.OEX_TESTNET),
     chainId,
     signer,
   })

@@ -1,12 +1,12 @@
-import { useMemo } from 'react'
 import { Ifo, isCrossChainIfoSupportedOnly } from '@pancakeswap/ifos'
+import { useMemo } from 'react'
 
+import { useFetchIfo } from 'state/pools/hooks'
 import useGetPublicIfoV7Data from 'views/Ifos/hooks/v7/useGetPublicIfoData'
 import useGetWalletIfoV7Data from 'views/Ifos/hooks/v7/useGetWalletIfoData'
-import { useFetchIfo } from 'state/pools/hooks'
 
-import { IfoCurrentCard } from './components/IfoFoldableCard'
 import IfoContainer from './components/IfoContainer'
+import { IfoCurrentCard } from './components/IfoFoldableCard'
 import IfoSteps from './components/IfoSteps'
 import { useICakeBridgeStatus } from './hooks/useIfoCredit'
 

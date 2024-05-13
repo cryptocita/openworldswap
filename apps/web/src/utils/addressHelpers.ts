@@ -16,6 +16,15 @@ export const getAddressFromMapNoFallback = (address: Addresses, chainId?: number
   return chainId ? address[chainId] : null
 }
 
+export const getTokenFactoryAddress = (chainId: number) => {
+  return getAddressFromMap(addresses.tokenFactory, chainId)
+}
+
+export const getTokenFactoryAddressMap = (): { [chainId: number]: Address } => {
+  // @ts-ignore
+  return addresses.tokenFactory
+}
+
 export const getMasterChefV2Address = (chainId?: number) => {
   return getAddressFromMap(addresses.masterChef, chainId)
 }

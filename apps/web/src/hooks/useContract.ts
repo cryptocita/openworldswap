@@ -50,6 +50,7 @@ import {
   getRevenueSharingVeCakeContract,
   getSidContract,
   getStableSwapNativeHelperContract,
+  getTokenFactoryContract,
   getTradingCompetitionContractEaster,
   getTradingCompetitionContractFanToken,
   getTradingCompetitionContractMoD,
@@ -67,22 +68,27 @@ import {
 import { ChainId } from '@pancakeswap/chains'
 import { ifoV7ABI } from '@pancakeswap/ifos'
 import { WNATIVE, pancakePairV2ABI } from '@pancakeswap/sdk'
-import { CAKE } from '@pancakeswap/tokens'
+import { CAKE, OWS } from '@pancakeswap/tokens'
 import { nonfungiblePositionManagerABI } from '@pancakeswap/v3-sdk'
 import { multicallABI } from 'config/abi/Multicall'
+import erc20TemplateAbi from 'config/abi/erc20Template.json'
 import { erc20Bytes32ABI } from 'config/abi/erc20_bytes32'
+import { erc721CollectionABI } from 'config/abi/erc721collection'
 import { ifoV1ABI } from 'config/abi/ifoV1'
 import { ifoV2ABI } from 'config/abi/ifoV2'
 import { ifoV3ABI } from 'config/abi/ifoV3'
+import { infoStableSwapABI } from 'config/abi/infoStableSwap'
 import { wbethBscABI } from 'config/abi/wbethBSC'
 import { wbethEthABI } from 'config/abi/wbethETH'
+import { wethABI } from 'config/abi/weth'
 import { zapABI } from 'config/abi/zap'
 import { WBETH } from 'config/constants/liquidStaking'
 import { VaultKey } from 'state/types'
 
-import { erc721CollectionABI } from 'config/abi/erc721collection'
-import { infoStableSwapABI } from 'config/abi/infoStableSwap'
-import { wethABI } from 'config/abi/weth'
+import ifoV1Abi from 'config/abi/ifo_v1.json'
+import ifoV2Abi from 'config/abi/ifo_v2.json'
+import ifoV3Abi from 'config/abi/ifo_v3.json'
+
 /**
  * Helper hooks to get specific contracts (by ABI)
  */
@@ -103,6 +109,11 @@ export const useIfoV7Contract = (address: Address, options?: UseContractOptions)
   return useContract(address, ifoV7ABI, options)
 }
 
+export const useIfoContract = (address: string, version: number) => {
+  const abi = version === 1 ? ifoV1Abi : version === 2 ? ifoV2Abi : ifoV3Abi
+  return useContract(address as `0x${string}`, abi as Abi)
+}
+
 export const useERC20 = (address?: Address, options?: UseContractOptions) => {
   return useContract(address, erc20Abi, options)
 }
@@ -111,6 +122,26 @@ export const useCake = () => {
   const { chainId } = useActiveChainId()
 
   return useContract((chainId && CAKE[chainId]?.address) ?? CAKE[ChainId.BSC].address, erc20Abi)
+}
+
+export const useERC20Template = (address: string) => {
+  return useContract(address as `0x${string}`, erc20TemplateAbi as Abi)
+}
+
+// export const useTokenFactoryContract = () => {
+//   return useContract(getTokenFactoryAddressMap(), tokenFactoryAbi as Abi)
+// }
+
+export const useTokenFactoryContract = () => {
+  const { chainId } = useActiveChainId()
+  const { data: signer } = useWalletClient()
+  return useMemo(() => getTokenFactoryContract(signer ?? undefined, chainId), [signer, chainId])
+}
+
+export const useOWS = () => {
+  const { chainId } = useActiveChainId()
+
+  return useContract((chainId && OWS[chainId]?.address) ?? OWS[ChainId.OEX_TESTNET].address, erc20Abi)
 }
 
 export const useBunnyFactory = () => {
