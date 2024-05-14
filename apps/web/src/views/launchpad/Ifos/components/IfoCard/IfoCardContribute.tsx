@@ -77,7 +77,7 @@ const IfoCardContribute: React.FC<Props> = ({ ifoPublicData, ifoUserData, status
   //   )
   // }
 
-  console.log('sdfsdf', isClaimable, claimed, isFinished, pendingTx)
+  // console.log('sdfsdf', isClaimable, claimed, isFinished, pendingTx)
 
   return (
     <>
