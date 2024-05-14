@@ -18,12 +18,27 @@ export interface Ifo {
 
 const dfgToken = new ERC20Token(ChainId.OEX_TESTNET, '0x19E6FF42F72B05f5dBc7C8d2546B1D93697Ac0f0', 18, 'dfg', 'dfg', '')
 const ifos: Ifo[] = [
+  // {
+  //   id: 'ows-private-sale',
+  //   address: '0xC7BFa0033257A51DefED996Ef576c62505E725bA',
+  //   chainId: ChainId.OEX_TESTNET,
+  //   isActive: true,
+  //   name: 'OWS Token Sale Test ',
+  //   subTitle: 'Test of launchpad',
+  //   description: ' This is purpose of the launchpad test',
+  //   projectSiteUrl: '',
+  //   releaseAt: 1715566265,
+  //   icoToken: dfgToken,
+  //   version: 1,
+  //   audit: false,
+  //   kyc: false,
+  // },
   {
     id: 'ows-private-sale',
-    address: '0xC7BFa0033257A51DefED996Ef576c62505E725bA',
+    address: '0xfaf6c1dE114F4D1dA81550a04bED653C26525be3',
     chainId: ChainId.OEX_TESTNET,
     isActive: true,
-    name: 'OWS Token Sale Test ',
+    name: 'OWS Token Sale Test',
     subTitle: 'Test of launchpad',
     description: ' This is purpose of the launchpad test',
     projectSiteUrl: '',

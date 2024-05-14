@@ -58,6 +58,7 @@ const IfoCard: React.FC<IfoCardProps> = ({ ifo }) => {
 
   const ifoPublicData = useIfoPublicData(ifo, statusChanged)
   const ifoUserData = useIfoUserData(ifo, statusChanged)
+  // console.log('SDfsdf', ifoUserData, ifo)
 
   const { id, name, description, subTitle, softcap, isLoading, startDateNum, endDateNum, claimDateNum, releaseAt } =
     ifoPublicData
