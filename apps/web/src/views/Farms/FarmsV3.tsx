@@ -223,6 +223,24 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     '0x8Ce4B67b08c147572c463c894Ff5b540FB58C42a',
   )
 
+  // cakeWrapperAddress: Address | undefined,
+  // lpAddress: Address | undefined,
+  // userAddress: Address | undefined,
+  // tokenAddress: Address | undefined,
+  // quoteTokenAddress: Address | undefined,
+
+  const userUSDTDFGLPFarmUserInfo = useCakeUserInfo(
+    '0x8D8764D9acC4433aAE8F563765f0e4061d0CDbfc', // wrapper address of usdtdfg lp farm
+    '0x9e58643E43A9dF537Eca5beF6cb0e385BB89a475', // usdtdfg lp farm
+    account,
+    '0xB6FCDab5Cf73f23289b8f0f163120E2207a8d452', // DFG address
+    '0x8Ce4B67b08c147572c463c894Ff5b540FB58C42a', // WUSDT address
+  )
+
+  //   v2Wrapper deployed to: 0x8D8764D9acC4433aAE8F563765f0e4061d0CDbfc
+  // currentTimestampInSeconds: 1715846771
+  // initialize usdtOwsLp wrapper
+
   const mockfarms = [
     {
       bCakeWrapperAddress: '0x9892D6bB304D2ec55E9cF6Ecdd422DDc2C08d6Cc',
@@ -262,6 +280,45 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       isStable: false,
       lpTokenStakedAmount: BigNumber('0'),
       bCakePublicData: userCakeInfo,
+    },
+
+    {
+      bCakeWrapperAddress: '0x8D8764D9acC4433aAE8F563765f0e4061d0CDbfc',
+      lpAddress: '0x9e58643E43A9dF537Eca5beF6cb0e385BB89a475',
+      lpSymbol: 'DFG-USDT LP',
+      pid: 1,
+      multiplier: '0X',
+      isCommunity: false,
+      quoteTokenPriceBusd: '1.000243551548465797',
+      tokenPriceBusd: '0.15',
+
+      token: new Token(7798, '0xB6FCDab5Cf73f23289b8f0f163120E2207a8d452', 18, 'DFG', 'DFG', ''),
+      quoteToken: new Token(7798, '0x8Ce4B67b08c147572c463c894Ff5b540FB58C42a', 18, 'WUSDT', 'Wrapped USDT', ''),
+
+      userData: {
+        allowance: BigNumber('0'),
+        tokenBalance: BigNumber('0'),
+        stakedBalance: BigNumber('0'),
+        earnings: BigNumber('0'),
+        proxy: {
+          allowance: BigNumber('0'),
+          tokenBalance: BigNumber('0'),
+          stakedBalance: BigNumber('0'),
+          earnings: BigNumber('0'),
+        },
+      },
+      bCakeUserData: userUSDTDFGLPFarmUserInfo,
+      tokenAmountTotal: userUSDTDFGLPFarmUserInfo.tokenAmountTotal,
+      quoteTokenAmountTotal: userUSDTDFGLPFarmUserInfo.quoteTokenAmountTotal,
+      lpTotalInQuoteToken: userUSDTDFGLPFarmUserInfo.lpTotalInQuoteToken,
+      lpTotalSupply: userUSDTDFGLPFarmUserInfo.lpTotalSupply,
+      lpTokenPrice: BigNumber('5.06897804356614923382926066133376208667060322561472604639572681079411595248236524'),
+      tokenPriceVsQuote: userUSDTDFGLPFarmUserInfo.tokenPriceVsQuote,
+      poolWeight: BigNumber('0'),
+      boosted: true,
+      isStable: false,
+      lpTokenStakedAmount: BigNumber('0'),
+      bCakePublicData: userUSDTDFGLPFarmUserInfo,
     },
   ]
 

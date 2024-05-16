@@ -19,6 +19,14 @@
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
     },
     {
+      "name": "DFG",
+      "symbol": "DFG",
+      "address": "0xB6FCDab5Cf73f23289b8f0f163120E2207a8d452",
+      "chainId": 7798,
+      "decimals": 18,
+      "logoURI": ""
+    },
+    {
       "name": "OpenWorldSwap Token",
       "symbol": "OWS",
       "address": "0x4De88a40bd5334aeCF573022a13C7C32E8086792",
