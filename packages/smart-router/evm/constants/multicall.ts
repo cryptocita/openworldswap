@@ -73,4 +73,6 @@ export const BATCH_MULTICALL_CONFIGS: ChainMap<BatchMulticallConfigs> = {
   [ChainId.BASE_SEPOLIA]: DEFAULT,
 
   [ChainId.OEX_TESTNET]: DEFAULT,
+  [ChainId.MATCHAIN]: DEFAULT,
+  [ChainId.FIVEIRE]: DEFAULT,
 }

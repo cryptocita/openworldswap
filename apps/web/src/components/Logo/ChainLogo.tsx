@@ -20,6 +20,30 @@ export const ChainLogo = memo(
           />
         )
       }
+      if (chainId === ChainId.FIVEIRE) {
+        return (
+          <Image
+            alt={`chain-${chainId}`}
+            style={{ maxHeight: `${height}px` }}
+            src="https://s3.coinmarketcap.com/static-gravity/image/fd7a43cc620c4ade96804bb1c36aac6f.png"
+            width={width}
+            height={height}
+            unoptimized
+          />
+        )
+      }
+      if (chainId === ChainId.MATCHAIN) {
+        return (
+          <Image
+            alt={`chain-${chainId}`}
+            style={{ maxHeight: `${height}px` }}
+            src="https://s3.coinmarketcap.com/static-gravity/image/97ca265b81c04affada1a309b3661bf0.png"
+            width={width}
+            height={height}
+            unoptimized
+          />
+        )
+      }
       return (
         <Image
           alt={`chain-${chainId}`}

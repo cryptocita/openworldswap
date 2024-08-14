@@ -163,6 +163,8 @@ const SHORT_SYMBOL = {
   [ChainId.BASE_SEPOLIA]: 'Base Sepolia',
   [ChainId.ARBITRUM_SEPOLIA]: 'Arb Sepolia',
   [ChainId.OEX_TESTNET]: 'OpenEX Long Testnet',
+  [ChainId.MATCHAIN]: 'MATCHAIN',
+  [ChainId.FIVEIRE]: '5ire',
 } as const satisfies Record<ChainId, string>
 
 export const NetworkSwitcher = () => {
@@ -188,6 +190,15 @@ export const NetworkSwitcher = () => {
     return null
   }
 
+  const avatarSrc =
+    chainId !== ChainId.OEX_TESTNET
+      ? chainId === ChainId.FIVEIRE
+        ? 'https://s3.coinmarketcap.com/static-gravity/image/fd7a43cc620c4ade96804bb1c36aac6f.png'
+        : chainId === ChainId.MATCHAIN
+        ? 'https://s3.coinmarketcap.com/static-gravity/image/97ca265b81c04affada1a309b3661bf0.png'
+        : `${ASSET_CDN}/web/chains/${chainId}.png`
+      : `/images/chains/${chainId}.png`
+
   return (
     <Box ref={cannotChangeNetwork ? targetRef : null} height="100%">
       {cannotChangeNetwork && tooltipVisible && tooltip}
@@ -195,9 +206,7 @@ export const NetworkSwitcher = () => {
         mr="8px"
         placement="bottom"
         variant={isLoading ? 'pending' : isWrongNetwork ? 'danger' : 'default'}
-        avatarSrc={
-          chainId !== ChainId.OEX_TESTNET ? `${ASSET_CDN}/web/chains/${chainId}.png` : `/images/chains/${chainId}.png`
-        }
+        avatarSrc={avatarSrc}
         disabled={cannotChangeNetwork}
         text={
           isLoading ? (

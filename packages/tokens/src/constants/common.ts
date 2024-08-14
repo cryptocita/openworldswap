@@ -1,5 +1,7 @@
 import { ChainId } from '@pancakeswap/chains'
 import { ERC20Token } from '@pancakeswap/sdk'
+import { fiveireTokens } from './fiveire'
+import { matchainTokens } from './matchain'
 import { oexTestnetTokens } from './oexTestnet'
 
 export const CAKE_MAINNET = new ERC20Token(
@@ -414,6 +416,7 @@ export const STABLE_COIN = {
   [ChainId.SEPOLIA]: USDC[ChainId.SEPOLIA],
   [ChainId.ARBITRUM_SEPOLIA]: USDC[ChainId.ARBITRUM_SEPOLIA],
   [ChainId.BASE_SEPOLIA]: USDC[ChainId.BASE_SEPOLIA],
-
   [ChainId.OEX_TESTNET]: oexTestnetTokens.weth,
+  [ChainId.MATCHAIN]: matchainTokens.weth,
+  [ChainId.FIVEIRE]: fiveireTokens.weth,
 } satisfies Record<ChainId, ERC20Token>

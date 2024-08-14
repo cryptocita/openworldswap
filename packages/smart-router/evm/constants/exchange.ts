@@ -14,8 +14,10 @@ import {
   bscTestnetTokens,
   bscTokens,
   ethereumTokens,
+  fiveireTokens,
   lineaTestnetTokens,
   lineaTokens,
+  matchainTokens,
   oexTestnetTokens,
   opBnbTestnetTokens,
   opBnbTokens,
@@ -52,6 +54,8 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.BASE_SEPOLIA]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
 
   [ChainId.OEX_TESTNET]: '',
+  [ChainId.MATCHAIN]: '',
+  [ChainId.FIVEIRE]: '',
 } as const satisfies Record<ChainId, string>
 
 export const V2_ROUTER_ADDRESS: ChainMap<string> = {
@@ -77,6 +81,8 @@ export const V2_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BASE_SEPOLIA]: '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb',
 
   [ChainId.OEX_TESTNET]: '0x813605069Aa78C01AEE5eb27d6CdeE21797040da',
+  [ChainId.MATCHAIN]: '0xF85dfb7BDEb1b5953B89341e814a6049619a14AD',
+  [ChainId.FIVEIRE]: '0xF85dfb7BDEb1b5953B89341e814a6049619a14AD',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -102,6 +108,8 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.BASE_SEPOLIA]: '',
 
   [ChainId.OEX_TESTNET]: '',
+  [ChainId.MATCHAIN]: '',
+  [ChainId.FIVEIRE]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -136,6 +144,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.BASE_SEPOLIA]: [baseSepoliaTokens.usdc, baseSepoliaTokens.weth],
 
   [ChainId.OEX_TESTNET]: [oexTestnetTokens.weth, oexTestnetTokens.oex],
+  [ChainId.MATCHAIN]: [matchainTokens.weth, matchainTokens.mocka],
+  [ChainId.FIVEIRE]: [fiveireTokens.weth, fiveireTokens.mocka],
 }
 
 const czusd = new ERC20Token(ChainId.BSC, '0xE68b79e51bf826534Ff37AA9CeE71a3842ee9c70', 18, 'CZUSD', 'CZUSD')

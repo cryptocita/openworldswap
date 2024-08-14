@@ -44,6 +44,8 @@ export function getV3Subgraphs({ noderealApiKey }: SubgraphParams) {
     [ChainId.ARBITRUM_SEPOLIA]: null,
     [ChainId.BASE_SEPOLIA]: null,
     [ChainId.OEX_TESTNET]: null,
+    [ChainId.MATCHAIN]: null,
+    [ChainId.FIVEIRE]: null,
   } as const satisfies Record<ChainId, string | null>
 }
 
@@ -60,6 +62,8 @@ export function getV2Subgraphs({ noderealApiKey }: SubgraphParams) {
     [ChainId.BASE]: 'https://api.studio.thegraph.com/query/45376/exchange-v2-base/version/latest',
     [ChainId.OPBNB]: `https://open-platform-ap.nodereal.io/${noderealApiKey}/opbnb-mainnet-graph-query/subgraphs/name/pancakeswap/exchange-v2`,
     [ChainId.OEX_TESTNET]: null,
+    [ChainId.MATCHAIN]: null,
+    [ChainId.FIVEIRE]: null,
   }
 }
 

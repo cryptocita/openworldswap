@@ -9,9 +9,11 @@ import { baseTestnetTokens } from './constants/baseTestnet'
 import { bscTokens } from './constants/bsc'
 import { bscTestnetTokens } from './constants/bscTestnet'
 import { ethereumTokens } from './constants/eth'
+import { fiveireTokens } from './constants/fiveire'
 import { goerliTestnetTokens } from './constants/goerli'
 import { lineaTokens } from './constants/linea'
 import { lineaTestnetTokens } from './constants/lineaTestnet'
+import { matchainTokens } from './constants/matchain'
 import { oexTestnetTokens } from './constants/oexTestnet'
 import { opBnbTokens } from './constants/opBNB'
 import { opBnbTestnetTokens } from './constants/opBnbTestnet'
@@ -44,4 +46,6 @@ export const allTokens = {
   [ChainId.ARBITRUM_SEPOLIA]: arbSepoliaTokens,
   [ChainId.BASE_SEPOLIA]: baseSepoliaTokens,
   [ChainId.OEX_TESTNET]: oexTestnetTokens,
+  [ChainId.MATCHAIN]: matchainTokens,
+  [ChainId.FIVEIRE]: fiveireTokens,
 }

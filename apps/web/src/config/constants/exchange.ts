@@ -13,8 +13,10 @@ import {
   baseTokens,
   bscTestnetTokens,
   bscTokens,
+  fiveireTokens,
   lineaTestnetTokens,
   lineaTokens,
+  matchainTokens,
   oexTestnetTokens,
   opBnbTestnetTokens,
   opBnbTokens,
@@ -55,6 +57,8 @@ export const CHAIN_REFRESH_TIME = {
   [ChainId.BASE_SEPOLIA]: 6_000,
   [ChainId.ARBITRUM_SEPOLIA]: 6_000,
   [ChainId.OEX_TESTNET]: 6_000,
+  [ChainId.MATCHAIN]: 6_000,
+  [ChainId.FIVEIRE]: 6_000,
 } as const satisfies Record<ChainId, number>
 
 // used for display in the default list when adding liquidity
@@ -85,6 +89,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ARBITRUM_SEPOLIA]: [arbSepoliaTokens.usdc, arbSepoliaTokens.weth],
   [ChainId.BASE_SEPOLIA]: [baseSepoliaTokens.usdc, baseSepoliaTokens.weth],
   [ChainId.OEX_TESTNET]: [oexTestnetTokens.weth, oexTestnetTokens.oex],
+  [ChainId.MATCHAIN]: [matchainTokens.weth, matchainTokens.mocka],
+  [ChainId.FIVEIRE]: [fiveireTokens.weth, fiveireTokens.mocka],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -110,6 +116,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.ARBITRUM_SEPOLIA]: [arbSepoliaTokens.usdc, arbSepoliaTokens.weth],
   [ChainId.BASE_SEPOLIA]: [baseSepoliaTokens.usdc, baseSepoliaTokens.weth],
   [ChainId.OEX_TESTNET]: [oexTestnetTokens.weth, oexTestnetTokens.oex],
+  [ChainId.MATCHAIN]: [matchainTokens.weth, matchainTokens.mocka],
+  [ChainId.FIVEIRE]: [fiveireTokens.weth, fiveireTokens.mocka],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

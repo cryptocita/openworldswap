@@ -19,6 +19,8 @@ import {
   zkSync,
   zkSyncTestnet,
 } from 'wagmi/chains'
+import { fiveire } from './fiveire'
+import { matchain } from './matchain'
 import { oexTestnet } from './oexTestnet'
 
 const ARBITRUM_NODES = [
@@ -86,6 +88,8 @@ export const SERVER_NODES = {
   [ChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia.rpcUrls.default.http,
   [ChainId.BASE_SEPOLIA]: baseSepolia.rpcUrls.default.http,
   [ChainId.OEX_TESTNET]: oexTestnet.rpcUrls.default.http,
+  [ChainId.MATCHAIN]: matchain.rpcUrls.default.http,
+  [ChainId.FIVEIRE]: fiveire.rpcUrls.default.http,
 } satisfies Record<ChainId, readonly string[]>
 
 export const PUBLIC_NODES: Record<ChainId, string[] | readonly string[]> = {
@@ -159,4 +163,6 @@ export const PUBLIC_NODES: Record<ChainId, string[] | readonly string[]> = {
   [ChainId.ARBITRUM_SEPOLIA]: arbitrumSepolia.rpcUrls.default.http,
   [ChainId.BASE_SEPOLIA]: baseSepolia.rpcUrls.default.http,
   [ChainId.OEX_TESTNET]: oexTestnet.rpcUrls.default.http,
+  [ChainId.MATCHAIN]: matchain.rpcUrls.default.http,
+  [ChainId.FIVEIRE]: fiveire.rpcUrls.default.http,
 } satisfies Record<ChainId, readonly string[]>

@@ -10,9 +10,11 @@ import {
   bscTestnetTokens,
   bscTokens,
   ethereumTokens,
+  fiveireTokens,
   goerliTestnetTokens,
   lineaTestnetTokens,
   lineaTokens,
+  matchainTokens,
   oexTestnetTokens,
   opBnbTestnetTokens,
   opBnbTokens,
@@ -46,6 +48,8 @@ export const usdGasTokensByChain = {
   [ChainId.BASE_SEPOLIA]: [baseSepoliaTokens.usdc],
 
   [ChainId.OEX_TESTNET]: [oexTestnetTokens.wusdt],
+  [ChainId.MATCHAIN]: [matchainTokens.weth],
+  [ChainId.FIVEIRE]: [fiveireTokens.weth],
 } satisfies Record<ChainId, Token[]>
 
 export * from './stableSwap'

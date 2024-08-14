@@ -32,6 +32,8 @@ export const FACTORY_ADDRESS_MAP = {
   [ChainId.ARBITRUM_SEPOLIA]: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E',
   [ChainId.BASE_SEPOLIA]: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E',
   [ChainId.OEX_TESTNET]: '0x1db943C82d331f102eBeD97256dD8dDaF8DaEF90',
+  [ChainId.MATCHAIN]: '0x7ca97424273C7e81224faFD4531C27BF9ec8131d',
+  [ChainId.FIVEIRE]: '0x7ca97424273C7e81224faFD4531C27BF9ec8131d',
 } as const satisfies Record<ChainId, Address>
 
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -59,6 +61,8 @@ export const INIT_CODE_HASH_MAP = {
   [ChainId.ARBITRUM_SEPOLIA]: INIT_CODE_HASH_ETH,
   [ChainId.BASE_SEPOLIA]: INIT_CODE_HASH_ETH,
   [ChainId.OEX_TESTNET]: '0xd7c05e4979420f92dee27e9b0a3a75181a1881b263eee1ee5b9f56242394f414',
+  [ChainId.MATCHAIN]: '0x0aeb033db7c2d4dc652d31ca901a9a6c20c6a87568d64127373a3fc5ce39e1aa',
+  [ChainId.FIVEIRE]: '0x0aeb033db7c2d4dc652d31ca901a9a6c20c6a87568d64127373a3fc5ce39e1aa',
 } as const satisfies Record<ChainId, Hash>
 
 export const WETH9 = {
@@ -231,6 +235,22 @@ export const WETH9 = {
     'Wrapped USDT',
     'https://weth.io'
   ),
+  [ChainId.MATCHAIN]: new ERC20Token(
+    ChainId.MATCHAIN,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://weth.io'
+  ),
+  [ChainId.FIVEIRE]: new ERC20Token(
+    ChainId.FIVEIRE,
+    '0x680DACAab79347041C917Ff1bB64b991fc81E9F4',
+    18,
+    'WETH',
+    'Wrapped ETH',
+    'https://weth.io'
+  ),
 }
 
 export const WBNB = {
@@ -274,6 +294,22 @@ export const WBNB = {
     'Wrapped BNB',
     'https://www.binance.org'
   ),
+  [ChainId.MATCHAIN]: new ERC20Token(
+    ChainId.MATCHAIN,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
+  [ChainId.FIVEIRE]: new ERC20Token(
+    ChainId.FIVEIRE,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped ETH',
+    'https://www.binance.org'
+  ),
 }
 
 export const WNATIVE = {
@@ -299,6 +335,8 @@ export const WNATIVE = {
   [ChainId.BASE_SEPOLIA]: WETH9[ChainId.BASE_SEPOLIA],
 
   [ChainId.OEX_TESTNET]: WETH9[ChainId.OEX_TESTNET],
+  [ChainId.MATCHAIN]: WETH9[ChainId.MATCHAIN],
+  [ChainId.FIVEIRE]: WETH9[ChainId.FIVEIRE],
 } satisfies Record<ChainId, ERC20Token>
 
 const ETHER = { name: 'Ether', symbol: 'ETH', decimals: 18 } as const
@@ -357,6 +395,16 @@ export const NATIVE = {
   [ChainId.OEX_TESTNET]: {
     name: 'USDT',
     symbol: 'USDT',
+    decimals: 18,
+  },
+  [ChainId.MATCHAIN]: {
+    name: 'BNB',
+    symbol: 'BNB',
+    decimals: 18,
+  },
+  [ChainId.FIVEIRE]: {
+    name: 'ETH',
+    symbol: 'ETH',
     decimals: 18,
   },
 } satisfies Record<

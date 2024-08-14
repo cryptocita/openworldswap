@@ -1,6 +1,8 @@
 import { ChainId, chainNames } from '@pancakeswap/chains'
 import memoize from 'lodash/memoize'
 import { Chain, bscTestnet, bsc as bsc_ } from 'wagmi/chains'
+import { fiveire } from './fiveire'
+import { matchain } from './matchain'
 import { oexTestnet } from './oexTestnet'
 
 export const CHAIN_QUERY_NAME = chainNames
@@ -52,6 +54,8 @@ export const L2_CHAIN_IDS: ChainId[] = [
   ChainId.ARBITRUM_SEPOLIA,
   ChainId.BASE_SEPOLIA,
   ChainId.OEX_TESTNET,
+  ChainId.MATCHAIN,
+  ChainId.FIVEIRE,
 ]
 
 export const CHAINS: [Chain, ...Chain[]] = [
@@ -75,4 +79,6 @@ export const CHAINS: [Chain, ...Chain[]] = [
   // opBNBTestnet,
   // scrollSepolia,
   oexTestnet,
+  matchain,
+  fiveire,
 ]
