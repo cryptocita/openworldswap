@@ -233,7 +233,7 @@ export const WETH9 = {
     18,
     'WUSDT',
     'Wrapped USDT',
-    'https://weth.io'
+    ''
   ),
   [ChainId.MATCHAIN]: new ERC20Token(
     ChainId.MATCHAIN,
@@ -241,15 +241,16 @@ export const WETH9 = {
     18,
     'WBNB',
     'Wrapped BNB',
-    'https://weth.io'
+    'https://www.binance.org'
   ),
+
   [ChainId.FIVEIRE]: new ERC20Token(
     ChainId.FIVEIRE,
-    '0x680DACAab79347041C917Ff1bB64b991fc81E9F4',
+    '0xCFaEB74409E4C6756C43F75455fc42A6A3FdEb1f',
     18,
-    'WETH',
-    'Wrapped ETH',
-    'https://weth.io'
+    'W5IRE',
+    'Wrapped 5IRE',
+    ''
   ),
 }
 
@@ -302,14 +303,6 @@ export const WBNB = {
     'Wrapped BNB',
     'https://www.binance.org'
   ),
-  [ChainId.FIVEIRE]: new ERC20Token(
-    ChainId.FIVEIRE,
-    '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped ETH',
-    'https://www.binance.org'
-  ),
 }
 
 export const WNATIVE = {
@@ -335,7 +328,7 @@ export const WNATIVE = {
   [ChainId.BASE_SEPOLIA]: WETH9[ChainId.BASE_SEPOLIA],
 
   [ChainId.OEX_TESTNET]: WETH9[ChainId.OEX_TESTNET],
-  [ChainId.MATCHAIN]: WETH9[ChainId.MATCHAIN],
+  [ChainId.MATCHAIN]: WBNB[ChainId.MATCHAIN],
   [ChainId.FIVEIRE]: WETH9[ChainId.FIVEIRE],
 } satisfies Record<ChainId, ERC20Token>
 
@@ -403,8 +396,8 @@ export const NATIVE = {
     decimals: 18,
   },
   [ChainId.FIVEIRE]: {
-    name: 'ETH',
-    symbol: 'ETH',
+    name: '5IRE',
+    symbol: '5IRE',
     decimals: 18,
   },
 } satisfies Record<

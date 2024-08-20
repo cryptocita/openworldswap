@@ -1,10 +1,10 @@
-import { Currency, Token } from '@pancakeswap/sdk'
 import { ChainId } from '@pancakeswap/chains'
-import { Text, QuestionHelper, AutoColumn } from '@pancakeswap/uikit'
-import { CurrencyLogo } from '@pancakeswap/widgets-internal'
-import { styled } from 'styled-components'
-import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useTranslation } from '@pancakeswap/localization'
+import { Currency, Token } from '@pancakeswap/sdk'
+import { AutoColumn, QuestionHelper, Text } from '@pancakeswap/uikit'
+import { CurrencyLogo } from '@pancakeswap/widgets-internal'
+import useNativeCurrency from 'hooks/useNativeCurrency'
+import { styled } from 'styled-components'
 
 import { SUGGESTED_BASES } from 'config/constants/exchange'
 import { AutoRow } from '../Layout/Row'
@@ -82,6 +82,7 @@ export default function CommonBases({
         </ButtonWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] || [] : []).map((token: Token) => {
           const selected = selectedCurrency?.equals(token)
+
           return (
             <ButtonWrapper key={`buttonBase#${token.address}`}>
               <BaseWrapper onClick={() => !selected && onSelect(token)} disable={selected}>

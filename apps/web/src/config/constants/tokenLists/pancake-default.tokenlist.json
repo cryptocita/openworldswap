@@ -11,6 +11,23 @@
   "keywords": ["pancake", "default"],
   "tokens": [
     {
+      "name": "Wrapped 5IRE",
+      "symbol": "W5IRE",
+      "address": "0xCFaEB74409E4C6756C43F75455fc42A6A3FdEb1f",
+      "chainId": 995,
+      "decimals": 18,
+      "logoURI": "https://s3.coinmarketcap.com/static-gravity/image/fd7a43cc620c4ade96804bb1c36aac6f.png"
+    },
+    {
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "address": "0x4200000000000000000000000000000000000006",
+      "chainId": 698,
+      "decimals": 18,
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/bnb.png"
+    },
+
+    {
       "name": "Wrapped USDT",
       "symbol": "WUSDT",
       "address": "0x8Ce4B67b08c147572c463c894Ff5b540FB58C42a",

@@ -45,6 +45,14 @@ export const getImageUrlFromToken = (token: Token) => {
     }
   }
 
+  if (token?.isNative && token.chainId === ChainId.MATCHAIN) {
+    return 'https://tokens.pancakeswap.finance/images/symbol/bnb.png'
+  }
+
+  if (token?.isNative && token.chainId === ChainId.FIVEIRE) {
+    return 'https://s3.coinmarketcap.com/static-gravity/image/fd7a43cc620c4ade96804bb1c36aac6f.png'
+  }
+
   return token?.isNative && token.chainId !== ChainId.BSC
     ? `${ASSET_CDN}/web/native/${token.chainId}.png`
     : `https://tokens.pancakeswap.finance/images/${tokenImageChainNameMapping[token.chainId]}${address}.png`
