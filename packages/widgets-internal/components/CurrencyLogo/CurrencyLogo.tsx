@@ -41,6 +41,7 @@ export function CurrencyLogo({
       }
       return [...logoUrls];
     }
+    // @ts-ignore
     return [`https://app.openworldswap.finance/images/tokens/${currency?.symbol}.png`];
   }, [currency, uriLocations, useTrustWalletUrl]);
 
